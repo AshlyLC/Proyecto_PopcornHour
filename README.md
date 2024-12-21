@@ -20,7 +20,7 @@ El proyecto está desarrollado con Flask en el backend, utilizando Python y cone
 - Los usuarios pueden registrarse con una cuenta estándar.  
 - Los roles estándar y moderador se asignan según las preferencias de registro o suscripción.  
 
-3. **Exploración:**  
+2. **Exploración:**  
 - Navega entre listas de contenido con descripciones detalladas, géneros y años de lanzamiento.  
 
 ## **Requisitos**  
