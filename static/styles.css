@@ -1,4 +1,3 @@
-/* Reseteo de márgenes y paddings */
 * {
     margin: 0;
     padding: 0;
@@ -141,7 +140,6 @@ nav ul li a:hover {
     }
 }
 
-/* Estilos para los botones */
 .btn {
     padding: 10px 20px;
     font-size: 16px;
