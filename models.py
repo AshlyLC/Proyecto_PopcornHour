@@ -1,8 +1,7 @@
 from database import db
 from flask_login import UserMixin
 
-# Modelos de la base de datos
-class User(db.Model, UserMixin):  # Modelo de usuario
+class User(db.Model, UserMixin): 
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -20,7 +19,6 @@ class User(db.Model, UserMixin):  # Modelo de usuario
     def __repr__(self):
         return f'<User {self.username}>'
     
-    # Métodos requeridos por Flask-Login
     @property
     def is_active(self):
         return True
@@ -36,7 +34,7 @@ class User(db.Model, UserMixin):  # Modelo de usuario
     def get_id(self):
         return str(self.id)
 
-class Anime(db.Model):  # Modelo de anime
+class Anime(db.Model): 
     __tablename__ = 'animes'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -45,9 +43,8 @@ class Anime(db.Model):  # Modelo de anime
     genre = db.Column(db.String(50), nullable=False)
     year = db.Column(db.Integer, nullable=False)
     image_url = db.Column(db.String(255), nullable=False)
-    uploaded_by = db.Column(db.Integer, db.ForeignKey('users.id'))  # Relacionado con el usuario que sube el anime
+    uploaded_by = db.Column(db.Integer, db.ForeignKey('users.id')) 
 
-    # Relaciones con los comentarios
     comments = db.relationship('Comment', backref='anime_reference', lazy=True)
 
     def __init__(self, title, description, genre, year, image_url):
@@ -63,12 +60,12 @@ class Anime(db.Model):  # Modelo de anime
 class Comment(db.Model):  # Modelo de comentario
     __tablename__ = 'comments'
     
-    id = db.Column(db.Integer, primary_key=True)  # ID del comentario
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)  # Relación con el usuario
-    anime_id = db.Column(db.Integer, db.ForeignKey('animes.id'), nullable=False)  # Relación con el anime
+    id = db.Column(db.Integer, primary_key=True)  
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False) 
+    anime_id = db.Column(db.Integer, db.ForeignKey('animes.id'), nullable=False) 
     text = db.Column(db.String(500), nullable=False)
-    rating = db.Column(db.Integer, nullable=False)  # Rating entre 1 y 5
-    parent_id = db.Column(db.Integer, db.ForeignKey('comments.id'), nullable=True)  # Relación con el comentario padre
+    rating = db.Column(db.Integer, nullable=False) 
+    parent_id = db.Column(db.Integer, db.ForeignKey('comments.id'), nullable=True) 
 
     # Relación con el usuario
     user = db.relationship('User', backref='comments')
@@ -85,7 +82,6 @@ class Comment(db.Model):  # Modelo de comentario
     def __repr__(self):
         return f'<Comment {self.text[:20]}>'
 
-    # Validación para asegurar que solo los usuarios con rol 'standard' puedan calificar
     @staticmethod
     def validate_rating(user):
         if user.role != 'standard':
