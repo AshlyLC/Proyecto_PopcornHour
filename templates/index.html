@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popcorn Hour</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 ¡Bienvenido a Popcorn Hour! 🎉</h1>
+        <p>¡Hola, otaku! 🌟 Bienvenido a <strong>Popcorn Hour</strong>, el lugar perfecto para recomendar, calificar y debatir sobre tus animes favoritos. 🍿✨</p>
+        <p>Únete a nuestra comunidad y comparte tus opiniones con otros fanáticos del anime. 🗣️🎌 </p> 
+        <p>¡Vamos a disfrutar juntos de este increíble mundo de anime! 🎬🌸</p>
+
+        {% if not session.get('user_id') %}
+            <div class="auth-options">
+                <h2>Inicia sesión o regístrate</h2>
+                <a href="{{ url_for('routes.login') }}" class="btn btn-primary">Iniciar sesión</a>
+                <a href="{{ url_for('routes.registro') }}" class="btn btn-secondary">Registrarse</a>
+            </div>
+        {% endif %}
+
+        <div class="anime-list">
+            {% for anime in animes %}
+            <div class="anime-item">
+                <img src="{{ anime.image_url }}" alt="{{ anime.title }}" class="anime-image">
+                <div class="anime-info">
+                    <h2>{{ anime.title }}</h2>
+                    <p>{{ anime.genre }}</p>
+                    <p>{{ anime.year }}</p>
+                    <p>Calificación: {{ anime_ratings[anime.id] }}</p>
+                    <a href="{{ url_for('routes.anime_detail', anime_id=anime.id) }}" class="btn btn-primary">Ver detalles</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

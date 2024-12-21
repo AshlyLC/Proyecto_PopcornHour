@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="welcome-message">
+    <h1>¡Hola, {{ username }}!</h1>
+    <h2>Animes</h2>
+</div>
+<div class="anime-grid">
+    {% for anime in animes %}
+    <div class="anime-card">
+        <img src="{{ anime.image_url }}" alt="{{ anime.title }}" class="anime-image">
+        <div class="anime-info">
+            <h2>{{ anime.title }}</h2>
+            <p>{{ anime.description }}</p>
+            <p><strong>Género:</strong> {{ anime.genre }}</p>
+            <p><strong>Año:</strong> {{ anime.year }}</p>
+        </div>
+        {% if role == 'standard' %}
+        <a href="{{ url_for('routes.anime_detail', anime_id=anime.id) }}" class="btn btn-primary">Calificar</a>
+        <a href="{{ url_for('routes.anime_detail', anime_id=anime.id) }}" class="btn btn-secondary">Comentar</a>
+        {% endif %}
+        {% if role == 'moderator' %}
+        <a href="{{ url_for('routes.edit_anime', anime_id=anime.id) }}" class="btn btn-warning">Editar</a>
+        <form method="POST" action="{{ url_for('routes.delete_anime', anime_id=anime.id) }}" style="display:inline;">
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+<a href="{{ url_for('routes.logout') }}" class="btn btn-secondary">Cerrar Sesión</a>

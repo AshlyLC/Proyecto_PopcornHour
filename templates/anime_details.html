@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="anime-details">
+    <h1>{{ anime.title }}</h1>
+    <p>{{ anime.description }}</p>
+    <p><strong>Género:</strong> {{ anime.genre }}</p>
+    <p><strong>Año:</strong> {{ anime.year }}</p>
+    <img src="{{ anime.image_url }}" alt="{{ anime.title }}" class="anime-image">
+
+    <h3>Promedio de Calificación: {{ average_rating|round(1) }} estrellas</h3>
+
+    <h3>Comentarios</h3>
+    <div class="comments">
+        {% for comment in comments %}
+        <div class="comment">
+            <p><strong>{{ comment.user.username }}</strong>: {{ comment.text }}</p>
+            <p><strong>Calificación:</strong> {{ comment.rating }} estrellas</p>
+            <!-- Mostrar respuestas -->
+            {% for reply in comment.replies %}
+            <div class="reply">
+                <p><strong>{{ reply.user.username }}</strong>: {{ reply.text }}</p>
+            </div>
+            {% endfor %}
+            <!-- Formulario para responder -->
+            {% if session.get('role') == 'standard' %}
+            <form method="POST" action="{{ url_for('routes.anime_detail', anime_id=anime.id) }}">
+                <textarea name="comment" placeholder="Escribe tu respuesta" required></textarea>
+                <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                <button type="submit" class="btn btn-secondary">Responder</button>
+            </form>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if session.get('role') == 'standard' %}
+        <!-- Formulario de calificación y comentario -->
+        <h3>Deja tu comentario y calificación:</h3>
+        <form method="POST" action="{{ url_for('routes.anime_detail', anime_id=anime.id) }}">
+            <textarea name="comment" placeholder="Escribe tu comentario" required></textarea>
+            <select name="rating" required>
+                <option value="1">1 estrella</option>
+                <option value="2">2 estrellas</option>
+                <option value="3">3 estrellas</option>
+                <option value="4">4 estrellas</option>
+                <option value="5">5 estrellas</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Comentar y Calificar</button>
+        </form>
+    {% else %}
+        <!-- Botón para volver a inicio si el usuario no está registrado -->
+        <a href="{{ url_for('routes.index') }}">
+            <button class="btn btn-primary">Volver a inicio</button>
+        </a>
+    {% endif %}
+</div>
+{% endblock %}

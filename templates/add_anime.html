@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Anime</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Agregar Anime</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <label for="title">Título:</label>
+            <input type="text" name="title" id="title" required>
+        
+            <label for="description">Descripción:</label>
+            <textarea name="description" id="description" required></textarea>
+        
+            <label for="genre">Género:</label>
+            <input type="text" name="genre" id="genre" required>
+        
+            <label for="year">Año:</label>
+            <input type="number" name="year" id="year" required>
+        
+            <!-- Campo para subir la imagen -->
+            <label for="image">Imagen:</label>
+            <input type="file" name="image" id="image" required>
+        
+            <button type="submit" class="btn btn-primary">Agregar Anime</button>
+        </form>
+
+        <a href="{{ url_for('routes.inicio') }}" class="btn btn-secondary">Volver</a>
+    </div>
+</body>
+</html>

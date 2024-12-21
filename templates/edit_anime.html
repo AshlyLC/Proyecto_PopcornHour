@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5 edit-anime-container">
+    <h1 class="mb-4">Editar Anime</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="title">Título</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{ anime.title }}" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Descripción</label>
+            <textarea class="form-control" id="description" name="description" rows="4" required>{{ anime.description }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="genre">Género</label>
+            <input type="text" class="form-control" id="genre" name="genre" value="{{ anime.genre }}" required>
+        </div>
+        <div class="form-group">
+            <label for="year">Año</label>
+            <input type="number" class="form-control" id="year" name="year" value="{{ anime.year }}" required>
+        </div>
+        <div class="form-group">
+            <label for="image">Imagen</label>
+            <input type="file" class="form-control-file" id="image" name="image">
+            {% if anime.image_url %}
+            <img src="{{ anime.image_url }}" alt="{{ anime.title }}" class="img-thumbnail mt-2" style="max-width: 200px;">
+            {% endif %}
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a href="{{ url_for('routes.inicio') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

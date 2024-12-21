@@ -1,0 +1,278 @@
+/* Reseteo de márgenes y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo general del cuerpo */
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #ffe6e6; /* Fondo rosita */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    text-align: center; /* Centrar todos los textos */
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center; /* Centrar todos los textos */
+}
+
+/* Navegación */
+nav {
+    background-color: #ff99cc; /* Fondo rosita más fuerte */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center; /* Centrar los elementos de navegación */
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.anime-image {
+    width: 200px;  /* Ajusta el ancho según tus necesidades */
+    height: 300px; /* Ajusta la altura según tus necesidades */
+    object-fit: cover; /* Esto asegura que la imagen se ajuste al contenedor sin distorsionarse */
+    border: 1px solid #ddd; /* Opcional: agregar un borde para mejor visualización */
+}
+
+/* Lista de animes */
+.anime-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Estilo de los elementos de la lista de animes */
+.anime-item {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+/* Información del anime */
+.anime-info {
+    padding: 15px;
+    text-align: left;
+    background-color: #fff;
+    margin-left: 20px;
+}
+
+.anime-info h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.anime-info p {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+/* Efecto de hover sobre el elemento de la lista de animes */
+.anime-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto de hover sobre la imagen */
+.anime-item:hover .anime-image {
+    transform: scale(1.05);
+    opacity: 0.85;
+}
+
+/* Responsividad para dispositivos móviles */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .anime-item {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .anime-info {
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .anime-info h2 {
+        font-size: 1.1rem;
+    }
+
+    .anime-info p {
+        font-size: 12px;
+    }
+}
+
+/* Estilos para los botones */
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin: 5px; /* Añadir margen para separar los botones */
+}
+
+.btn-primary {
+    background-color: #ff6699; /* Botón rosa más fuerte */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #cc3366; /* Tono más fuerte al pasar el mouse */
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #ff99cc; /* Botón rosa más fuerte */
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #cc6699; /* Tono más fuerte al pasar el mouse */
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background-color: #e94e77;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c43b5d;
+    transform: translateY(-2px);
+}
+
+/* Estilos para los comentarios */
+.comment {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Estilos para las respuestas */
+.reply {
+    margin-left: 20px;  /* Sangría para diferenciar las respuestas */
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+}
+
+/* Estilos para los formularios */
+form {
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input, form textarea, form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff6699; /* Botón rosa más fuerte */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+form button:hover {
+    background-color: #cc3366; /* Tono más fuerte al pasar el mouse */
+    transform: translateY(-2px);
+}
+
+/* Estilos específicos para edit_anime.html */
+.edit-anime-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: left;
+}
+
+.edit-anime-container h1 {
+    margin-bottom: 20px;
+}
+
+.edit-anime-container .form-group {
+    margin-bottom: 15px;
+}
+
+.edit-anime-container .form-group label {
+    font-weight: bold;
+}
+
+.edit-anime-container .form-group input,
+.edit-anime-container .form-group textarea,
+.edit-anime-container .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.edit-anime-container .form-group img {
+    max-width: 200px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
