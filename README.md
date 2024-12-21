@@ -33,9 +33,9 @@ El proyecto está desarrollado con Flask en el backend, utilizando Python y cone
 
 ## **Instalación y configuración**  
 
-**1. Clonar el repositorio**  
-**2. Crear un entorno virtual**  
-**3. Instalar requisitos**  
-**4. Configurar la base de datos**  
-**5. Ejecutar**  
-**6. Acceder al sitio web**  
+1. Clonar el repositorio
+2. Crear un entorno virtual
+3. Instalar requisitos  
+4. Configurar la base de datos 
+5. Ejecutar
+6. Acceder al sitio web
