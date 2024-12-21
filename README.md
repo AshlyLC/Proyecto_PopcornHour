@@ -24,12 +24,11 @@ El proyecto está desarrollado con Flask en el backend, utilizando Python y cone
 - Navega entre listas de contenido con descripciones detalladas, géneros y años de lanzamiento.  
 
 ## **Requisitos**  
-- Python  
-- Flask  
-- Flask-Login  
-- SQLAlchemy  
-- PostgreSQL  
-
+Flask
+Flask-Login
+Flask-SQLAlchemy
+psycopg2-binary
+SQLAlchemy
 
 ## **Instalación y configuración**  
 
